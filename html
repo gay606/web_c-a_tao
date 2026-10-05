@@ -1,0 +1,333 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AppleJr – iOS IPA Installer</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+        }
+        body {
+            background: #0d0d0d;
+            color: #f0f0f0;
+            padding: 16px;
+        }
+        .container {
+            margin max-width: 900px;
+            margin: 0 auto;
+        }
+        h1 {
+           -bottom font-size: 2.2rem;
+            font-weight: 700;
+            text-align: center;
+            margin: 20px 0 8px;
+            letter-spacing: -0.5px;
+            background: linear-gradient(135deg, #ff6b6b, #feca57, #48dbfb, #a29bfe);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+        .sub {
+            text-align: center;
+            color: #888;
+            margin-bottom: 30px;
+            font-size: 0.95rem;
+        }
+        .featured {
+            background: #1a1a1a;
+            border-radius: 16px;
+            padding: 18px;
+            margin-bottom: 24px;
+            border-left: 4px solid #feca57;
+        }
+        .featured h3 {
+            font-size: 1rem;
+            color: #feca57;
+           : 6px;
+        }
+        .featured p {
+            color: #aaa;
+            font-size: 0.9rem;
+            line-height: 1.5;
+        }
+        .section-title {
+            font-size: 1.3rem;
+            font-weight: 600;
+            margin: 28px 0 14px;
+            color: #fff;
+        }
+        .grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+            gap: 14px;
+        }
+        .card {
+            background: #161616;
+            border-radius: 14px;
+            padding: 16px;
+            border: 1px solid #222;
+            transition: 0.2s;
+        }
+        .card:hover {
+            border-color: #333;
+            background: #1a1a1a;
+        }
+        .card h4 {
+            font-size: 1rem;
+            margin-bottom: 4px;
+        }
+        .card .meta {
+            font-size: 0.8rem;
+            color: #777;
+            margin-bottom: 12px;
+        }
+        .btn {
+            display: inline-block;
+            background: #2a2a2a;
+            color: #fff;
+            padding: 8px 18px;
+            border-radius: 10px;
+            font-size: 0.85rem;
+            font-weight: 500;
+            text-decoration: none;
+            border: none;
+            cursor: pointer;
+            transition: 0.2s;
+        }
+        .btn:hover {
+            background: #3a3a3a;
+        }
+        .btn-primary {
+            background: #feca57;
+            color: #000;
+            font-weight: 600;
+        }
+        .btn-primary:hover {
+            background: #ffdb7a;
+        }
+        .dns-list {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+            margin: 10px 0 20px;
+        }
+        .dns-item {
+            background: #1a1a1a;
+            border-radius: 10px;
+            padding: 10px 14px;
+            font-size: 0.85rem;
+            border: 1px solid #222;
+            flex: 1 1 180px;
+        }
+        .dns-item strong {
+            color: #feca57;
+            display: block;
+            font-size: 0.7rem;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            margin-bottom: 2px;
+        }
+        .dns-item span {
+            color: #ddd;
+        }
+        .warning {
+            background: #2a1a1a;
+            border: 1px solid #552222;
+            border-radius: 12px;
+            padding: 14px;
+            color: #ff8888;
+            font-size: 0.85rem;
+            margin: 16px 0;
+        }
+        .footer {
+            text-align: center;
+            color: #444;
+            font-size: 0.75rem;
+            margin-top: 40px;
+            padding: 20px 0;
+            border-top: 1px solid #1a1a1a;
+        }
+        .ipa-tools {
+            background: #121212;
+            border-radius: 14px;
+            padding: 18px;
+            margin-top: 10px;
+        }
+        .ipa-tools h3 {
+            font-size: 1.1rem;
+            margin-bottom: 12px;
+        }
+        .search-bar {
+            display: flex;
+            gap: 10px;
+            margin-bottom: 16px;
+        }
+        .search-bar input {
+            flex: 1;
+            background: #1e1e1e;
+            border: 1px solid #2a2a2a;
+            border-radius: 10px;
+            padding: 10px 14px;
+            color: #fff;
+            font-size: 0.9rem;
+            outline: none;
+        }
+        .search-bar input:focus {
+            border-color: #feca57;
+        }
+        .search-bar button {
+            background: #feca57;
+            color: #000;
+            border: none;
+            border-radius: 10px;
+            padding: 10px 20px;
+            font-weight: 600;
+            cursor: pointer;
+        }
+        .badge {
+            display: inline-block;
+            background: #222;
+            color: #aaa;
+            font-size: 0.7rem;
+            padding: 3px 10px;
+            border-radius: 20px;
+            margin-left: 8px;
+        }
+        @media (max-width: 480px) {
+            h1 { font-size: 1.6rem; }
+            .grid { grid-template-columns: 1fr; }
+            .dns-item { flex: 1 1 100%; }
+        }
+    </style>
+</head>
+<body>
+<div class="container">
+
+    <h1>AppleJr</h1>
+    <p class="sub">iOS Apps • IPA Installer • Signer</p>
+
+    <div class="featured">
+        <h3>FEATURED</h3>
+        <p><strong>Fix Unable to Install?</strong><br>Get ESign, Scarlet or KSign working again.</p>
+    </div>
+
+    <div class="grid">
+        <div class="card">
+            <h4>IPA Library</h4>
+            <p class="meta">Discover iOS tools, emulators and utilities.</p>
+            <a href="#" class="btn">Открыть</a>
+        </div>
+        <div class="card">
+            <h4>Sign Your IPA</h4>
+            <p class="meta">Upload and sign compatible IPA files directly.</p>
+            <a href="#" class="btn btn-primary">Подписать</a>
+        </div>
+        <div class="card">
+            <h4>Delta Executor</h4>
+            <p class="meta">Direct install the latest Delta Executor for iOS (New Certificate).</p>
+            <a href="#" class="btn btn-primary">Установить →</a>
+        </div>
+    </div>
+
+    <div class="section-title">⭐ Featured</div>
+    <div class="grid">
+        <div class="card"><h4>Minecraft</h4><p class="meta">Java Edition iOS</p><a href="#" class="btn">Установить</a></div>
+        <div class="card"><h4>Delta Executor</h4><p class="meta">iOS Direct Install Method</p><a href="#" class="btn">Установить</a></div>
+        <div class="card"><h4>PlayStation 3 iOS</h4><p class="meta">Install PS3 Games</p><a href="#" class="btn">Установить</a></div>
+        <div class="card"><h4>Auto Clicker</h4><p class="meta">Auto Clicker iOS</p><a href="#" class="btn">Установить</a></div>
+        <div class="card"><h4>Apple Music</h4><p class="meta">Get Free Apple Music</p><a href="#" class="btn">Установить</a></div>
+        <div class="card"><h4>ESign</h4><p class="meta">Signer</p><a href="#" class="btn">Установить</a></div>
+        <div class="card"><h4>Scarlet</h4><p class="meta">Signer</p><a href="#" class="btn">Установить</a></div>
+        <div class="card"><h4>KSign</h4><p class="meta">Signer</p><a href="#" class="btn">Установить</a></div>
+        <div class="card"><h4>SideInstaller</h4><p class="meta">SideStore / LiveContainer</p><a href="#" class="btn">Установить</a></div>
+        <div class="card"><h4>Certs</h4><p class="meta">Сертификаты</p><a href="#" class="btn">Открыть</a></div>
+    </div>
+
+    <div class="section-title">ESign iOS Installer</div>
+    <div class="featured" style="border-left-color: #48dbfb;">
+        <h3>AppleJr DNS</h3>
+        <p>Required Anti-Revoke</p>
+    </div>
+
+    <div class="dns-list">
+        <div class="dns-item"><strong>Esign</strong><span>Signed • Beihang University</span></div>
+        <div class="dns-item"><strong>Esign</strong><span>DNS VINWASH</span></div>
+        <div class="dns-item"><strong>Esign</strong><span>DNS HSBC Bank</span></div>
+        <div class="dns-item"><strong>Esign</strong><span>DNS CenPower</span></div>
+        <div class="dns-item"><strong>Esign</strong><span>DNS CenPower 2</span></div>
+        <div class="dns-item"><strong>Esign</strong><span>DNS Qingdao</span></div>
+        <div class="dns-item"><strong>Esign</strong><span>DNS Jiangsu Simcere 1</span></div>
+        <div class="dns-item"><strong>Esign</strong><span>DNS Jiangsu Simcere 2</span></div>
+        <div class="dns-item"><strong>Esign</strong><span>DNS Vietnam Rubber</span></div>
+        <div class="dns-item"><strong>Esign</strong><span>DNS Moving Increasingly 1</span></div>
+        <div class="dns-item"><strong>Esign</strong><span>DNS Moving Increasingly 2</span></div>
+        <div class="dns-item"><strong>Esign</strong><span>DNS Vietnam Airlines</span></div>
+        <div class="dns-item"><strong>Esign</strong><span>DNS China Telecom</span></div>
+        <div class="dns-item"><strong>Esign</strong><span>DNS Xibei</span></div>
+        <div class="dns-item"><strong>Esign</strong><span>DNS Aramco Services</span></div>
+        <div class="dns-item"><strong>Esign</strong><span>DNS XL Axiata</span></div>
+        <div class="dns-item"><strong>Esign</strong><span>DNS Luoyang</span></div>
+    </div>
+
+    <div style="text-align:center; margin: 20px 0;">
+        <span class="badge">APPLEJR</span>
+        <span class="badge">14 APPS</span>
+    </div>
+
+    <div class="section-title">📚 Jailbreak Tools</div>
+    <p style="color:#888; font-size:0.9rem; margin-bottom:16px;">Direct-install tools and utilities for supported iPhone and iPad versions.</p>
+
+    <div class="warning">
+        <strong>Before You Install</strong><br>
+        Tap Install to install the IPA directly. If it doesn’t install, make sure your certificate is trusted (Settings → General → VPN & Device Management). You must Install AppleJr DNS to make it works. AppleJr DNS is recommended when this installation method requires it.
+    </div>
+
+    <div class="featured" style="border-left-color: #ff6b6b;">
+        <h3>REQUIRED</h3>
+        <p><strong>AppleJr DNS</strong><br>Recommended before using supported direct-install options.</p>
+        <a href="#" class="btn btn-primary" style="margin-top:10px;">Установить</a>
+    </div>
+
+    <div class="grid">
+        <div class="card"><h4>Dopamine</h4><p class="meta">Jailbreak iOS 15-26.1</p><a href="#" class="btn">Установить</a></div>
+        <div class="card"><h4>Dopamine RootHide</h4><p class="meta">Jailbreak iOS 15-17</p><a href="#" class="btn">Установить</a></div>
+        <div class="card"><h4>PS3 Emulator</h4><p class="meta">iOS 16-27</p><a href="#" class="btn">Установить</a></div>
+        <div class="card"><h4>Lara</h4><p class="meta">iOS 26-16.0</p><a href="#" class="btn">Установить</a></div>
+        <div class="card"><h4>SideInstaller</h4><p class="meta">SideStore / LiveContainer</p><a href="#" class="btn">Установить</a></div>
+        <div class="card"><h4>Filza Escaped</h4><p class="meta">iOS 17.0-26.0.1</p><a href="#" class="btn">Установить</a></div>
+        <div class="card"><h4>TrollInstallerX</h4><p class="meta">iOS 14-16.6.1</p><a href="#" class="btn">Установить</a></div>
+        <div class="card"><h4>Fugu15</h4><p class="meta">Jailbreak iOS 15-15.4.1</p><a href="#" class="btn">Установить</a></div>
+        <div class="card"><h4>Xina15</h4><p class="meta">Jailbreak iOS 15-15.1</p><a href="#" class="btn">Установить</a></div>
+        <div class="card"><h4>ShadowRocket</h4><p class="meta">Tools</p><a href="#" class="btn">Установить</a></div>
+        <div class="card"><h4>Taurine</h4><p class="meta">Jailbreak iOS 14-14.8</p><a href="#" class="btn">Установить</a></div>
+        <div class="card"><h4>Unc0ver</h4><p class="meta">Jailbreak iOS 11-14.3</p><a href="#" class="btn">Установить</a></div>
+        <div class="card"><h4>Chimera</h4><p class="meta">Jailbreak iOS 12-12.5.7</p><a href="#" class="btn">Установить</a></div>
+        <div class="card"><h4>Freya</h4><p class="meta">Jailbreak iOS 11-12.5.7</p><a href="#" class="btn">Установить</a></div>
+    </div>
+
+    <div class="section-title">IPA Tools</div>
+    <div class="ipa-tools">
+        <h3>Download the IPA files</h3>
+        <p style="color:#777; font-size:0.85rem; margin-bottom:14px;">Download the IPA files listed below and install using Or install using.</p>
+        <div class="search-bar">
+            <input type="text" placeholder="🔍 Поиск IPA...">
+            <button>Найти</button>
+        </div>
+        <div class="grid">
+            <div class="card"><h4>ESign</h4><p class="meta">IPA Signer</p><a href="#" class="btn btn-primary">Скачать</a></div>
+            <div class="card"><h4>Scarlet</h4><p class="meta">IPA Installer</p><a href="#" class="btn btn-primary">Скачать</a></div>
+            <div class="card"><h4>KSign</h4><p class="meta">IPA Signer</p><a href="#" class="btn btn-primary">Скачать</a></div>
+            <div class="card"><h4>Delta Executor</h4><p class="meta">Game Tool</p><a href="#" class="btn btn-primary">Скачать</a></div>
+        </div>
+    </div>
+
+    <div class="footer">
+        AppleJr © 2026 — iOS IPA Installer, ESign, Scarlet, KSign & IPA Signer
+    </div>
+
+</div>
+</body>
+</html>
